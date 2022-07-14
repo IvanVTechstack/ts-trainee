@@ -306,6 +306,8 @@ window.tsTestsRun = () => {
         })
       })
     })
+
+    prettify.toHTML(run(), document.body)
 }
 
 window.intervalId = setInterval(() => {
@@ -314,8 +316,8 @@ window.intervalId = setInterval(() => {
     window.intervalId && clearInterval(window.intervalId)
     console.log("!!!catch!!!")
     window.document.querySelector("div.notification").innerHTML = ""
+    console.log(window.tsTestsRun)
     window.tsTestsRun && window.tsTestsRun()
-    prettify.toHTML(run(), document.body)
   } else {
     console.log("waiting")
     showNotification && showNotification()
