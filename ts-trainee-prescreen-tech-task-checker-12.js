@@ -62,7 +62,7 @@ const correctCalculateTeamFinanceReport = (pricing, team) => {
 /**********************************************
     Tests
   ***********************************************/
-const tsTestsRun = () => {
+window.tsTestsRun = () => {
   if (windows.calculateTeamFinanceReport) {
     console.log("run tests")
     describe("Base tests", () => {
@@ -310,14 +310,15 @@ const tsTestsRun = () => {
   }
 }
 
-const intervalId = setInterval(() => {
+window.intervalId = setInterval(() => {
   if (window.calculateTeamFinanceReport) {
     console.log("!!!catch!!!")
     window.document.querySelector("div.notification").innerHTML = ""
     tsTestsRun && tsTestsRun()
     window.tsTestsRun && window.tsTestsRun()
     prettify.toHTML(run(), document.body)
-    clearInterval(window.intervalId)
+    console.log("interval: " + window.intervalId)
+    window.intervalId && clearInterval(window.intervalId)
   } else {
     console.log("waiting")
     showNotification && showNotification()
