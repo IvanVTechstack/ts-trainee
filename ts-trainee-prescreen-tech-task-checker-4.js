@@ -5,13 +5,13 @@ const {
 } = window.jestLite
 
 if (!window.calculateTeamFinanceReport) {
-  const notification = document.createElement("div")
-  const text = document.createTextNode(
-    "Please, put candidate's code in JS section"
+  const span = document.createElement("span")
+  const textNode = document.createTextNode(
+    "Please put candidate code in JS section"
   )
-  notification.appendChild(text)
-  notification.classList.add("notification")
-  document.body.append(notification)
+  span.appendChild(textNode)
+  span.classList.add("notification")
+  document.body.append(span)
 }
 
 /**********************************************
@@ -57,7 +57,7 @@ const correctCalculateTeamFinanceReport = (pricing, team) => {
 /**********************************************
     Tests
   ***********************************************/
-if (calculateTeamFinanceReport) {
+if (windows.calculateTeamFinanceReport) {
   describe("Base tests", () => {
     it("Dima's tests", () => {
       const pricing1 = {
