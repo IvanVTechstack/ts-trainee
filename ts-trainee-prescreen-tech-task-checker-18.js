@@ -315,9 +315,9 @@ window.intervalId = setInterval(() => {
     console.log("interval: " + window.intervalId)
     window.intervalId && clearInterval(window.intervalId)
     console.log("!!!catch!!!")
-    console.log("tsTestsRun: " + window.tsTestsRun)
-    window.document.querySelector("div.notification").innerHTML = ""
-    console.log("tsTestsRun: " + window.tsTestsRun)
+    console.log("tsTestsRun: " + !!window.tsTestsRun)
+    // window.document.querySelector("div.notification").innerHTML = ""
+    console.log("tsTestsRun: " + !!window.tsTestsRun)
     window.tsTestsRun && window.tsTestsRun()
   } else {
     console.log("waiting")
