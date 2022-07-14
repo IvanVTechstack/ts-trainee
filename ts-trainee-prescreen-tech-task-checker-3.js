@@ -5,13 +5,13 @@ const {
 } = window.jestLite
 
 if (!window.calculateTeamFinanceReport) {
-  const span = document.createElement("span")
-  const textNode = document.createTextNode(
-    "Please put candidate code in JS section"
+  const notification = document.createElement("div")
+  const text = document.createTextNode(
+    "Please, put candidate's code in JS section"
   )
-  span.appendChild(textNode)
-  span.classList.add("notification")
-  document.body.append(span)
+  notification.appendChild(text)
+  notification.classList.add("notification")
+  document.body.append(notification)
 }
 
 /**********************************************
