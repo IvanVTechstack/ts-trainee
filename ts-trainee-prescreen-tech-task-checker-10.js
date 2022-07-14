@@ -318,8 +318,9 @@ const intervalId = setInterval(() => {
     prettify.toHTML(run(), document.body)
     clearInterval(intervalId)
   } else {
-    window.showNotification()
     console.log("waiting")
+    showNotification && showNotification()
+    window.showNotification && window.showNotification()
   }
 }, 2000)
 
