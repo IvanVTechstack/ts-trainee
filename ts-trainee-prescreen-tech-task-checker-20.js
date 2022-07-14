@@ -307,7 +307,7 @@ window.tsTestsRun = () => {
       })
     })
 
-    prettify.toHTML(run(), document.body)
+    //prettify.toHTML(run(), document.body)
 }
 
 window.intervalId = setInterval(() => {
@@ -322,6 +322,7 @@ window.intervalId = setInterval(() => {
     showNotification && showNotification()
     window.showNotification && window.showNotification()
   }
+  prettify.toHTML(run(), document.body)
 }, 2000)
 
 // prettify.toHTML(run(), document.body)
