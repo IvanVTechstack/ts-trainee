@@ -63,7 +63,7 @@ const correctCalculateTeamFinanceReport = (pricing, team) => {
     Tests
   ***********************************************/
 window.tsTestsRun = () => {
-  if (windows.calculateTeamFinanceReport) {
+  if (window.calculateTeamFinanceReport) {
     console.log("run tests")
     describe("Base tests", () => {
       console.log("Dima's tests")
@@ -312,13 +312,12 @@ window.tsTestsRun = () => {
 
 window.intervalId = setInterval(() => {
   if (window.calculateTeamFinanceReport) {
-    console.log("!!!catch!!!")
-    window.document.querySelector("div.notification").innerHTML = ""
-    tsTestsRun && tsTestsRun()
-    window.tsTestsRun && window.tsTestsRun()
-    prettify.toHTML(run(), document.body)
     console.log("interval: " + window.intervalId)
     window.intervalId && clearInterval(window.intervalId)
+    console.log("!!!catch!!!")
+    window.document.querySelector("div.notification").innerHTML = ""
+    window.tsTestsRun && window.tsTestsRun()
+    prettify.toHTML(run(), document.body)
   } else {
     console.log("waiting")
     showNotification && showNotification()
