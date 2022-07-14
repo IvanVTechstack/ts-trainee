@@ -23,7 +23,7 @@ const showNotification = () => {
     correctCalculateTeamFinanceReport
   ***********************************************/
 
-const correctCalculateTeamFinanceReport = (pricing, team) => {
+window.correctCalculateTeamFinanceReport = (pricing, team) => {
   const fullFilds = team.map((item) => ({
     ...item,
     type: pricing[item.specialization],
@@ -63,7 +63,6 @@ const correctCalculateTeamFinanceReport = (pricing, team) => {
     Tests
   ***********************************************/
 window.tsTestsRun = () => {
-  if (window.calculateTeamFinanceReport) {
     console.log("run tests")
     describe("Base tests", () => {
       console.log("Dima's tests")
@@ -233,19 +232,19 @@ window.tsTestsRun = () => {
           },
         ]
 
-        expect(calculateTeamFinanceReport(pricing1, team1)).toEqual(
-          correctCalculateTeamFinanceReport(pricing1, team1)
+        expect(window.calculateTeamFinanceReport(pricing1, team1)).toEqual(
+            window.correctCalculateTeamFinanceReport(pricing1, team1)
         )
-        expect(calculateTeamFinanceReport(pricing2, team2)).toEqual(
-          correctCalculateTeamFinanceReport(pricing2, team2)
+        expect(window.calculateTeamFinanceReport(pricing2, team2)).toEqual(
+            window.correctCalculateTeamFinanceReport(pricing2, team2)
         )
-        expect(calculateTeamFinanceReport(pricing3, team3)).toEqual(
-          correctCalculateTeamFinanceReport(pricing3, team3)
+        expect(window.calculateTeamFinanceReport(pricing3, team3)).toEqual(
+            window.correctCalculateTeamFinanceReport(pricing3, team3)
         )
         expect(
-          calculateTeamFinanceReport(pricing4, team4)?.totalTaxTesters
+            window.calculateTeamFinanceReport(pricing4, team4)?.totalTaxTesters
         ).toEqual(
-          correctCalculateTeamFinanceReport(pricing4, team4)?.totalTaxTesters
+            window.correctCalculateTeamFinanceReport(pricing4, team4)?.totalTaxTesters
         )
       })
 
@@ -278,7 +277,7 @@ window.tsTestsRun = () => {
           },
         ]
 
-        expect(calculateTeamFinanceReport(pricing, team)).toEqual({
+        expect(window.calculateTeamFinanceReport(pricing, team)).toEqual({
           totalBudgetTeam: 3398,
           totalBudgetProgger: 1176,
           totalBudgetTester: 2222,
@@ -299,7 +298,7 @@ window.tsTestsRun = () => {
           { name: "Leo", specialization: "Artist" },
         ]
 
-        expect(calculateTeamFinanceReport(pricing, team)).toEqual({
+        expect(window.calculateTeamFinanceReport(pricing, team)).toEqual({
           totalBudgetTeam: 4590,
           totalBudgetManager: 1111,
           totalBudgetDesigner: 1714,
@@ -307,7 +306,6 @@ window.tsTestsRun = () => {
         })
       })
     })
-  }
 }
 
 window.intervalId = setInterval(() => {
