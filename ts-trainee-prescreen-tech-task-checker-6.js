@@ -59,7 +59,9 @@ const correctCalculateTeamFinanceReport = (pricing, team) => {
   ***********************************************/
 const tsTestsRun = () => {
   if (windows.calculateTeamFinanceReport) {
+    console.log("run tests")
     describe("Base tests", () => {
+      console.log("Dima's tests")
       it("Dima's tests", () => {
         const pricing1 = {
           Progger: {
@@ -242,6 +244,7 @@ const tsTestsRun = () => {
         )
       })
 
+      console.log("task explanation case")
       it("task explanation case", () => {
         const pricing = {
           Progger: {
@@ -277,6 +280,7 @@ const tsTestsRun = () => {
         })
       })
 
+      console.log("task example case")
       it("task example case", () => {
         const pricing = {
           Manager: { salary: 1000, tax: "10%" },
@@ -304,6 +308,7 @@ const tsTestsRun = () => {
 const intervalId = setInterval(() => {
     if (window.calculateTeamFinanceReport) {
         console.log("!!!catch!!!")
+        window.document.querySelector("div.notification").innerHTML = ""
         clearInterval(intervalId)
         tsTestsRun()
     }
