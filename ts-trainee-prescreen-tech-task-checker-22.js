@@ -4,6 +4,8 @@ const {
   prettify,
 } = window.jestLite
 
+console.log("load core")
+
 const showNotification = () => {
   if (
     !window.calculateTeamFinanceReport &&
@@ -310,12 +312,16 @@ window.tsTestsRun = () => {
     //prettify.toHTML(run(), document.body)
 }
 
+console.log("start interval")
 window.intervalId = setInterval(() => {
   if (window.calculateTeamFinanceReport) {
     console.log("interval: " + window.intervalId)
     window.intervalId && clearInterval(window.intervalId)
     console.log("!!!catch!!!")
-    window.document.querySelector("div.notification")?.innerHTML = ""
+    const notification = window.document.querySelector("div.notification")
+    if (notification) {
+     notification.innerHTML = "" 
+    }
     window.tsTestsRun && window.tsTestsRun()
   } else {
     console.log("waiting")
