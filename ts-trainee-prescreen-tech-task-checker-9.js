@@ -7,7 +7,7 @@ const {
 const showNotification = () => {
   if (
     !window.calculateTeamFinanceReport &&
-    window.document.querySelector("div.notification")
+    !window.document.querySelector("div.notification")
   ) {
     const notificationNode = document.createElement("div")
     const textNode = document.createTextNode(
@@ -314,12 +314,13 @@ const intervalId = setInterval(() => {
   if (window.calculateTeamFinanceReport) {
     console.log("!!!catch!!!")
     window.document.querySelector("div.notification").innerHTML = ""
-    tsTestsRun()
+    window.tsTestsRun()
     prettify.toHTML(run(), document.body)
     clearInterval(intervalId)
+  } else {
+    window.showNotification()
+    console.log("waiting")
   }
-  showNotification()
-  console.log("waiting")
 }, 2000)
 
 // prettify.toHTML(run(), document.body)
