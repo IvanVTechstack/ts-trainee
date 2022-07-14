@@ -314,9 +314,10 @@ const intervalId = setInterval(() => {
   if (window.calculateTeamFinanceReport) {
     console.log("!!!catch!!!")
     window.document.querySelector("div.notification").innerHTML = ""
-    window.tsTestsRun()
+    tsTestsRun && tsTestsRun()
+    window.tsTestsRun && window.tsTestsRun()
     prettify.toHTML(run(), document.body)
-    clearInterval(intervalId)
+    clearInterval(window.intervalId)
   } else {
     console.log("waiting")
     showNotification && showNotification()
