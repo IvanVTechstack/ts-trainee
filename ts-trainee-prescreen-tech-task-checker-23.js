@@ -309,7 +309,7 @@ window.tsTestsRun = () => {
       })
     })
 
-    //prettify.toHTML(run(), document.body)
+    prettify.toHTML(run(), document.body)
 }
 
 console.log("start interval")
@@ -328,10 +328,7 @@ window.intervalId = setInterval(() => {
     showNotification && showNotification()
     window.showNotification && window.showNotification()
   }
-  prettify.toHTML(run(), document.body)
 }, 2000)
-
-prettify.toHTML(run(), document.body)
 
 // The accounting department turned to the IT department with a request to help with the financial report on the work of teams on the side of the vendor. It is known that the teams consist of a different number of specialists in different categories. It is also known that each category of specialists has its own fixed salary minus taxes and the rate of this tax. Accounting needs to calculate the cost of services for each specialty and the entire team.
 // Your team leader has prepared a function template that will perform the task. You need to implement this function. See details below
