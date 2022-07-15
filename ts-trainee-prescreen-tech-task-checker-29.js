@@ -309,7 +309,9 @@ window.tsTestsRun = () => {
     Tests
   ***********************************************/
 
+window.runTaskCheckerWaitingSeconds = 0
 window.runTaskChecker = () => {
+    window.runTaskCheckerWaitingSeconds++
     if (window.calculateTeamFinanceReport) {
         window.intervalId && clearInterval(window.intervalId)
         console.log("FOUND tested function")
@@ -317,7 +319,7 @@ window.runTaskChecker = () => {
         window.tsTestsRun()
         window.showNotification("")
     } else {
-        console.log("waiting tested function")
+        console.log("waiting tested function " + window.runTaskCheckerWaitingSeconds + "sec")
         window.showNotification("Please, put candidate's code in JS section")
     }
 }
