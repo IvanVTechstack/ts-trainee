@@ -160,7 +160,7 @@ window.tsTestsRun = () => {
       )
     })
 
-    it("should pass Dima's test #3 (tricky rounding case)", () => {
+    it("should pass Dima's test #3", () => {
       console.log("run Dima's test #3")
       const pricing3 = {
         Progger: {
@@ -204,12 +204,12 @@ window.tsTestsRun = () => {
       )
     })
 
-    it("should pass Dima's test #4", () => {
-      console.log("run Dima's test #4")
-      const pricing4 = {
+    it("should pass Dima's test #4 (tricky rounding case)", () => {
+      console.log("run Dima's test #4 (tricky rounding case)")
+      const salaries = {
         Progger: {
-          salary: 99990000, // without decimal counting system (100.5 or 99.99)
-          tax: "95%", // max - 99 min - 0
+          salary: 99990000,
+          tax: "95%",
         },
         Designer: {
           salary: 600,
@@ -228,7 +228,7 @@ window.tsTestsRun = () => {
           tax: "21%",
         },
       }
-      const team4 = [
+      const team = [
         {
           specialization: "Progger",
           name: "Vasa",
@@ -245,10 +245,14 @@ window.tsTestsRun = () => {
           specialization: "Tester",
           name: "Dima",
         },
+        {
+          specialization: "General",
+          name: "Napoleon",
+        },
       ]
 
-      expect(window.calculateTeamFinanceReport(pricing4, team4)).toEqual(
-        window.calculateTeamFinanceReportExpected(pricing4, team4)
+      expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
+        window.calculateTeamFinanceReportExpected(salaries, team)
       )
     })
 
@@ -328,7 +332,7 @@ window.runTaskChecker = () => {
     window.showNotification("")
   } else {
     console.log(
-      "waiting tested function " + window.runTaskCheckerWaitingSeconds + "sec"
+      "waiting tested function " + window.runTaskCheckerWaitingSeconds + " sec"
     )
     window.showNotification("Please, put candidate's code in JS section")
   }
