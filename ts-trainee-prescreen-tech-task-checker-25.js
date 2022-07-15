@@ -324,7 +324,7 @@ const runTaskChecker = () => {
 
 console.log("start waiting input tested function")
 runTaskChecker()
-const intervalId = runTaskChecker(main, 1000)
+const intervalId = setInterval(runTaskChecker, 1000)
 console.log("end load Task checker")
 
 // ********** TASK **********
