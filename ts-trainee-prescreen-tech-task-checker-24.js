@@ -4,21 +4,16 @@ const {
   prettify,
 } = window.jestLite
 
-console.log("load core")
-
-const showNotification = () => {
-  if (
-    !window.calculateTeamFinanceReport &&
-    !window.document.querySelector("div.notification")
-  ) {
-    const notificationNode = document.createElement("div")
-    const textNode = document.createTextNode(
-      "Please, put candidate's code in JS section"
-    )
-    notificationNode.appendChild(textNode)
+console.log("srat load Task checker")
+const showNotification = (notificationText) => {
+  let notificationNode
+  if (!window.document.querySelector("div.notification")) {
+    notificationNode = document.createElement("div")
     notificationNode.classList.add("notification")
     document.body.append(notificationNode)
   }
+
+  notificationNode.innerHTML = notificationText || ""
 }
 
 /**********************************************
@@ -65,10 +60,10 @@ window.correctCalculateTeamFinanceReport = (pricing, team) => {
     Tests
   ***********************************************/
 window.tsTestsRun = () => {
-    console.log("run tests")
-    describe("Base tests", () => {
-      console.log("Dima's tests")
-      it("Dima's tests", () => {
+    console.log("run 'calculateTeamFinanceReport' tests")
+    describe("'calculateTeamFinanceReport' function", () => {
+      it("should pass Dima's tests", () => {
+        console.log("run Dima's tests")
         const pricing1 = {
           Progger: {
             salary: 100000, // without decimal counting system (100.5 or 99.99)
@@ -243,15 +238,13 @@ window.tsTestsRun = () => {
         expect(window.calculateTeamFinanceReport(pricing3, team3)).toEqual(
             window.correctCalculateTeamFinanceReport(pricing3, team3)
         )
-        expect(
-            window.calculateTeamFinanceReport(pricing4, team4)?.totalTaxTesters
-        ).toEqual(
-            window.correctCalculateTeamFinanceReport(pricing4, team4)?.totalTaxTesters
+        expect(window.calculateTeamFinanceReport(pricing4, team4)).toEqual(
+            window.correctCalculateTeamFinanceReport(pricing4, team4)
         )
       })
-
-      console.log("task explanation case")
-      it("task explanation case", () => {
+      
+      it("should pass task explanation case", () => {
+        console.log("run task explanation case")
         const pricing = {
           Progger: {
             // specialization type 'Progger'
@@ -286,8 +279,9 @@ window.tsTestsRun = () => {
         })
       })
 
-      console.log("task example case")
-      it("task example case", () => {
+      
+      it("should pass task example case", () => {
+        console.log("run task example case")
         const pricing = {
           Manager: { salary: 1000, tax: "10%" },
           Designer: { salary: 600, tax: "30%" },
@@ -311,25 +305,29 @@ window.tsTestsRun = () => {
 
     prettify.toHTML(run(), document.body)
 }
+/**********************************************
+    Tests
+  ***********************************************/
 
-console.log("start interval")
-window.intervalId = setInterval(() => {
-  if (window.calculateTeamFinanceReport) {
-    console.log("interval: " + window.intervalId)
-    window.intervalId && clearInterval(window.intervalId)
-    console.log("!!!catch!!!")
-    const notification = window.document.querySelector("div.notification")
-    if (notification) {
-     notification.innerHTML = "" 
+const runTaskChecker = () => {
+    if (window.calculateTeamFinanceReport) {
+        intervalId && clearInterval(window.intervalId)
+        console.log("FOUND tested function")
+        showNotification("")
+        window.tsTestsRun && window.tsTestsRun()
+    } else {
+        console.log("waiting tested function")
+        showNotification("Please, put candidate's code in JS section")
+        // window.showNotification && window.showNotification()
     }
-    window.tsTestsRun && window.tsTestsRun()
-  } else {
-    console.log("waiting")
-    showNotification && showNotification()
-    window.showNotification && window.showNotification()
-  }
-}, 2000)
+}
 
+console.log("start waiting input tested function")
+runTaskChecker()
+const intervalId = runTaskChecker(main, 1000)
+console.log("end load Task checker")
+
+// ********** TASK **********
 // The accounting department turned to the IT department with a request to help with the financial report on the work of teams on the side of the vendor. It is known that the teams consist of a different number of specialists in different categories. It is also known that each category of specialists has its own fixed salary minus taxes and the rate of this tax. Accounting needs to calculate the cost of services for each specialty and the entire team.
 // Your team leader has prepared a function template that will perform the task. You need to implement this function. See details below
 // function calculateTeamFinanceReport(salaries, team) {...}
