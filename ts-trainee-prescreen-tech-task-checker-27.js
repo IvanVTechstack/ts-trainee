@@ -5,9 +5,9 @@ const {
 } = window.jestLite
 
 console.log("srat load Task checker")
-window.showNotification = (notificationText) => {
-  let notificationNode
-  if (!window.document.querySelector("div.notification")) {
+const showNotification = (notificationText) => {
+  let notificationNode = window.document.querySelector("div.notification")
+  if (!notificationNode) {
     notificationNode = document.createElement("div")
     notificationNode.classList.add("notification")
     document.body.append(notificationNode)
@@ -313,7 +313,7 @@ const runTaskChecker = () => {
     if (window.calculateTeamFinanceReport) {
         intervalId && clearInterval(window.intervalId)
         console.log("FOUND tested function")
-        window.showNotification("")
+        showNotification("")
         window.tsTestsRun()
     } else {
         console.log("waiting tested function")
