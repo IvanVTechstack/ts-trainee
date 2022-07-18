@@ -393,6 +393,35 @@ window.tsTestsRun = () => {
         window.calculateTeamFinanceReportExpected(salaries, team)
       )
     })
+    
+    it("should pass case with empty input ", () => {
+        console.log("run case with empty input")
+        const salaries = {}
+        const team = []
+        
+
+        expect(window.calculateTeamFinanceReport(salaries, team)).toEqual({
+            totalBudgetTeam: 0
+        })
+    })
+
+    it("should pass zero tax case", () => {
+        console.log("run zero tax case")
+        const salaries = {
+            TeamLead: { salary: 333, tax: "0%" },
+            Architect: { salary: 666, tax: "0%" },
+        }
+        const team = [
+            { name: "Alex", specialization: "TeamLead" },
+            { name: "Niko", specialization: "Architect" },
+        ]
+
+        expect(window.calculateTeamFinanceReport(salaries, team)).toEqual({
+            totalBudgetTeam: 999,
+            totalBudgetArchitect: 666,
+            totalBudgetTeamLead: 333,
+        })
+    })
   })
 
   prettify.toHTML(run(), document.body)
