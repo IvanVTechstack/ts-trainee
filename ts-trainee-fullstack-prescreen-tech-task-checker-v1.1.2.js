@@ -5,7 +5,7 @@ const {
 } = window.jestLite
 
 console.log("srat load Task checker")
-window.showNotification = (notificationText) => {
+window.showNotification = (notificationText, textColor = 'white') => {
   let notificationNode = window.document.querySelector("div.notification")
   if (!notificationNode) {
     notificationNode = document.createElement("div")
@@ -14,6 +14,7 @@ window.showNotification = (notificationText) => {
   }
 
   notificationNode.innerHTML = notificationText || ""
+  notificationNode.style.color = textColor
 }
 
 window.showCheckResult = () => {
@@ -80,8 +81,8 @@ window.calculateTeamFinanceReportExpected = (salaries, team) => {
 window.tsTestsRun = () => {
   console.log("run 'calculateTeamFinanceReport' tests")
   describe("'calculateTeamFinanceReport' function", () => {
-    it("should pass Dima's test #1", () => {
-      console.log("run Dima's test #1")
+    it("should pass Dima's test #1 (rounding trap)", () => {
+      console.log("run Dima's test #1 (rounding trap")
       const pricing1 = {
         Progger: {
           salary: 100000, // without decimal counting system (100.5 or 99.99)
@@ -226,8 +227,8 @@ window.tsTestsRun = () => {
       )
     })
 
-    it("should pass Dima's test #4 (tricky rounding case)", () => {
-      console.log("run Dima's test #4 (tricky rounding case)")
+    it("should pass Dima's test #4 (tricky rounding case with big values)", () => {
+      console.log("run Dima's test #4 (tricky rounding case with big values)")
       const salaries = {
         Progger: {
           salary: 99990000,
@@ -423,44 +424,3 @@ console.log("start waiting input tested function")
 window.runTaskChecker()
 window.intervalId = setInterval(window.runTaskChecker, 1000)
 console.log("end load Task checker")
-
-// ********** TASK **********
-// The accounting department turned to the IT department with a request to help with the financial report on the work of teams on the side of the vendor. It is known that the teams consist of a different number of specialists in different categories. It is also known that each category of specialists has its own fixed salary minus taxes and the rate of this tax. Accounting needs to calculate the cost of services for each specialty and the entire team.
-// Your team leader has prepared a function template that will perform the task. You need to implement this function. See details below
-// function calculateTeamFinanceReport(salaries, team) {...}
-// where salaries is object with details about salaries and taxes by specialist categories; minimum specializations amount is 1, maximum up to 10;
-// see template below
-// {
-//     Progger: { // specialization type 'Progger'
-//         salary: 1000, // salary minus tax; should be integer; min: 100, max: 100000
-//         tax: "15%" // tax percent; presented as string with template `{tax}%` where 'tax' is integer;  min: "0%", max: "99%"
-//     },
-//     Tester: {
-//         salary: 1000,
-//         tax: "10%"
-//     }
-//  // any else
-// }
-// where team is array of objects represented member of team with name and specialization; minimal team size is 1, maximum up to 100;
-// see template below
-// [
-//     {
-//         name: "Masha", // name of team member
-//         specialization: "Progger" // specialization should be picked from `salaries` otherwise member should be ignored in report
-//     },
-//     {
-//         name: "Vasya",
-//         specialization: "Tester"
-//     },
-//     {
-//         name: "Taras",
-//         specialization: "Tester"
-//     },
-//  // any else
-// ]
-// function should return report object follow next template
-// {
-//     totalBudgetTeam: 3398, // total salaries with tax of entire team; should be integer (truncate the fractional part)
-//     totalBudgetProgger: 1176, // total salaries with tax for all members by 'Progger' specialization; should be integer (truncate the fractional part)
-//     totalBudgetTester: 2222, // total salaries with tax for all members by 'Tester' specialization; should be integer (truncate the fractional part)
-// }
