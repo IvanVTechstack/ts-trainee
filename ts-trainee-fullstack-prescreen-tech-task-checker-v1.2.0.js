@@ -25,7 +25,7 @@ window.showCheckResult = () => {
       const regexRes = resultNode.innerText.match(/(\d?) passed/)
       if (regexRes[1]) {
         const passedTestsCount = parseInt(regexRes[1])
-        if (passedTestsCount > 0) {
+        if (passedTestsCount >= 3) {
           console.log("==check PASSED PARTIALLY")
           window.showNotification("PASSED PARTIALLY", "yellow")
         } else {
