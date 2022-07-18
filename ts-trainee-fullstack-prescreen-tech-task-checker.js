@@ -292,8 +292,8 @@ window.tsTestsRun = () => {
       })
     })
 
-    it("should pass task example case", () => {
-      console.log("run task example case")
+    it("should pass task example case #1", () => {
+      console.log("run task example case #1")
       const pricing = {
         Manager: { salary: 1000, tax: "10%" },
         Designer: { salary: 600, tax: "30%" },
@@ -313,6 +313,25 @@ window.tsTestsRun = () => {
         totalBudgetArtist: 1764,
       })
     })
+
+    it("should pass task example case #2", () => {
+      console.log("run task example case #2")
+      const salaries = {
+        TeamLead: { salary: 10000, tax: "1%" },
+        Architect: { salary: 90000, tax: "34%" },
+      }
+      const team = [
+        { name: "Alexander", specialization: "TeamLead" },
+        { name: "Gaudi", specialization: "Architect" },
+        { name: "Koolhas", specialization: "Architect" },
+        { name: "Foster", specialization: "Architect" },
+        { name: "Napoleon", specialization: "General" },
+      ]
+
+      expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
+        window.calculateTeamFinanceReportExpected(salaries, team)
+      )
+    })    
   })
 
   prettify.toHTML(run(), document.body)
