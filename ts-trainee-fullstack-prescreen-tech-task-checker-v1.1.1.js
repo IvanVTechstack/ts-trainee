@@ -16,6 +16,28 @@ window.showNotification = (notificationText) => {
   notificationNode.innerHTML = notificationText || ""
 }
 
+window.showCheckResult = () => {
+    const baseSelector = "span.jest-lite-report__summary-status"
+    let resultNode = window.document.body.querySelector(baseSelector + "--fail")
+    if (resultNode) {
+      console.log("==check result: " + resultNode.innerText)
+      const regexRes = resultNode.innerText.match(/(\d?) passed/)
+      if (regexRes[1]) {
+        const passedTestsCount = parseInt(regexRes[1])
+        if (passedTestsCount > 0) {
+          console.log("==check PASSED PARTIALLY")
+          window.showNotification("PASSED PARTIALLY", "yellow")
+        } else {
+          console.log("==check FAILED")
+          window.showNotification("FAILED", "red")
+        }
+      }
+    } else if (window.document.body.querySelector(baseSelector + "--pass")) {
+      console.log("==check PASSED")
+      window.showNotification("PASSED", "green")
+    }
+  }
+
 /**********************************************
     calculateTeamFinanceReportExpected
   ***********************************************/
@@ -373,6 +395,8 @@ window.tsTestsRun = () => {
   })
 
   prettify.toHTML(run(), document.body)
+  window.showNotification("...checking...")
+  setTimeout(window.showCheckResult, 200)
 }
 /**********************************************
     Tests
