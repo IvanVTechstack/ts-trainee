@@ -305,14 +305,14 @@ window.tsTestsRun = () => {
     it("should pass task example case #2", () => {
       console.log("run task example case #2")
       const salaries = {
-         Manager: { salary: 1000, tax: "10%" },
-         Designer: { salary: 600, tax: "30%" },
-         Artist: { salary: 1500, tax: "15%" },}
+         TeamLead: { salary: 1000, tax: "99%" },
+         Architect: { salary: 9000, tax: "34%" },}
       const team = [
-         { name: "Misha", specialization: "Manager" },
-         { name: "Max", specialization: "Designer" },
-         { name: "Vova", specialization: "Designer"},
-         { name: "Leo", specialization: "Artist"},]
+         { name: "Alexander", specialization: "TeamLead" },
+         { name: "Gaudi", specialization: "Architect" },
+         { name: "Koolhas", specialization: "Architect" },
+         { name: "Foster", specialization: "Architect" },
+         { name: "Napoleon", specialization: "General" },]
 
       expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
         {"totalBudgetTeam":140909,"totalBudgetTeamLead":100000,"totalBudgetArchitect":40909}
