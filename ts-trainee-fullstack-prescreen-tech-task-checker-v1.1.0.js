@@ -331,7 +331,45 @@ window.tsTestsRun = () => {
       expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
         window.calculateTeamFinanceReportExpected(salaries, team)
       )
-    })    
+    })
+    
+    it("should pass 100 members team with minimal salary and tax", () => {
+      console.log("run 100 members team with minimal salary and ta")
+      const salaries = {
+        Progger: {
+          salary: 1,
+          tax: "1%",
+        }
+      }
+
+      const team = []
+      for (let i = 1; i <= 100; i++) {
+        team.push({ name: "dev" + i, specialization: "Progger" })
+      }
+
+      expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
+        window.calculateTeamFinanceReportExpected(salaries, team)
+      )
+    })
+
+    it("should pass 100 members team with maximum salary and tax", () => {
+      console.log("run 100 members team with maximum salary and ta")
+      const salaries = {
+        Progger: {
+          salary: 100000,
+          tax: "99%",
+        }
+      }
+
+      const team = []
+      for (let i = 1; i <= 100; i++) {
+        team.push({ name: "dev" + i, specialization: "Progger" })
+      }
+
+      expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
+        window.calculateTeamFinanceReportExpected(salaries, team)
+      )
+    })
   })
 
   prettify.toHTML(run(), document.body)
