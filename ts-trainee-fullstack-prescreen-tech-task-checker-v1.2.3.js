@@ -22,7 +22,7 @@ window.showCheckResult = () => {
     let resultNode = window.document.body.querySelector(baseSelector + "--fail")
     if (resultNode) {
       console.log("==check result: " + resultNode.innerText)
-      const regexRes = resultNode.innerText.match(/(\d?) passed/)
+      const regexRes = resultNode.innerText.match(/(\d*) passed/)
       if (regexRes[1]) {
         const passedTestsCount = parseInt(regexRes[1])
         console.log("==check passedTestsCount: " + passedTestsCount)
@@ -305,19 +305,17 @@ window.tsTestsRun = () => {
     it("should pass task example case #2", () => {
       console.log("run task example case #2")
       const salaries = {
-        TeamLead: { salary: 10000, tax: "1%" },
-        Architect: { salary: 90000, tax: "34%" },
-      }
+         Manager: { salary: 1000, tax: "10%" },
+         Designer: { salary: 600, tax: "30%" },
+         Artist: { salary: 1500, tax: "15%" },}
       const team = [
-        { name: "Alexander", specialization: "TeamLead" },
-        { name: "Gaudi", specialization: "Architect" },
-        { name: "Koolhas", specialization: "Architect" },
-        { name: "Foster", specialization: "Architect" },
-        { name: "Napoleon", specialization: "General" },
-      ]
+         { name: "Misha", specialization: "Manager" },
+         { name: "Max", specialization: "Designer" },
+         { name: "Vova", specialization: "Designer"},
+         { name: "Leo", specialization: "Artist"},]
 
       expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
-        {}
+        {"totalBudgetTeam":140909,"totalBudgetTeamLead":100000,"totalBudgetArchitect":40909}
       )
     })
     
