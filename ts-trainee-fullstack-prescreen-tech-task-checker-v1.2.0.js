@@ -40,42 +40,6 @@ window.showCheckResult = () => {
   }
 
 /**********************************************
-    calculateTeamFinanceReportExpected
-  ***********************************************/
-
-window.calculateTeamFinanceReportExpected = (salaries, team) => {
-  const result = {
-    totalBudgetTeam: 0,
-  }
-
-  for (const member of team) {
-    const specialization = salaries[member.specialization]
-    if (!specialization) {
-      continue
-    }
-
-    const cleanSalaryPercent = 100 - Number.parseInt(specialization.tax)
-    const cleanSalary = specialization.salary / (cleanSalaryPercent / 100)
-    const budgetKey = `totalBudget${member.specialization}`
-    if (!result[budgetKey]) {
-      result[budgetKey] = 0
-    }
-
-    result.totalBudgetTeam += cleanSalary
-    result[budgetKey] += cleanSalary
-  }
-
-  Object.entries(result).forEach(([key, val]) => {
-    result[key] = Math.trunc(val)
-  })
-
-  return result
-}
-/**********************************************
-    calculateTeamFinanceReportExpected
-  ***********************************************/
-
-/**********************************************
     Tests
   ***********************************************/
 window.tsTestsRun = () => {
@@ -116,7 +80,7 @@ window.tsTestsRun = () => {
         },
       ]
       expect(window.calculateTeamFinanceReport(pricing1, team1)).toEqual(
-        window.calculateTeamFinanceReportExpected(pricing1, team1)
+        {totalBudgetProgger: 800000, totalBudgetTeam: 800000}
       )
     })
 
@@ -179,7 +143,7 @@ window.tsTestsRun = () => {
         },
       ]
       expect(window.calculateTeamFinanceReport(pricing2, team2)).toEqual(
-        window.calculateTeamFinanceReportExpected(pricing2, team2)
+        {"totalBudgetArchitect": 204, "totalBudgetDesigner": 2250, "totalBudgetDriver": 124998, "totalBudgetProjectManager": 5000, "totalBudgetTeam": 132452}
       )
     })
 
@@ -223,7 +187,7 @@ window.tsTestsRun = () => {
       ]
 
       expect(window.calculateTeamFinanceReport(pricing3, team3)).toEqual(
-        window.calculateTeamFinanceReportExpected(pricing3, team3)
+       {"totalBudgetDesigner": 750, "totalBudgetProgger": 2060232, "totalBudgetProjectManager": 5000, "totalBudgetTeam": 2065982}
       )
     })
 
@@ -275,7 +239,7 @@ window.tsTestsRun = () => {
       ]
 
       expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
-        window.calculateTeamFinanceReportExpected(salaries, team)
+        {"totalBudgetDesigner": 606, "totalBudgetProgger": 1999800000, "totalBudgetProjectManager": 74616848, "totalBudgetTeam": 2074417581, "totalBudgetTester": 126}
       )
     })
 
@@ -371,7 +335,7 @@ window.tsTestsRun = () => {
       }
 
       expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
-        window.calculateTeamFinanceReportExpected(salaries, team)
+        {"totalBudgetProgger": 101, "totalBudgetTeam": 101}
       )
     })
 
@@ -390,7 +354,7 @@ window.tsTestsRun = () => {
       }
 
       expect(window.calculateTeamFinanceReport(salaries, team)).toEqual(
-        window.calculateTeamFinanceReportExpected(salaries, team)
+        {"totalBudgetProgger": 1000000000, "totalBudgetTeam": 1000000000}
       )
     })
     
