@@ -398,7 +398,8 @@ window.tsTestsRun = () => {
 window.runTaskCheckerWaitingSeconds = 0
 window.runTaskChecker = () => {
   window.runTaskCheckerWaitingSeconds++
-  if (window.calculateTeamFinanceReport) {
+  if (window.calculateTeamFinanceReport || calculateTeamFinanceReport) {
+    window.calculateTeamFinanceReport = window.calculateTeamFinanceReport || calculateTeamFinanceReport
     window.intervalId && clearInterval(window.intervalId)
     console.log("FOUND tested function")
     window.showNotification("checking in progress...")
