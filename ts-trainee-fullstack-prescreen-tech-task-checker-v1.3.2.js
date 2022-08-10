@@ -80,7 +80,7 @@ window.showCheckResult = () => {
   ***********************************************/
 window.tsTestsRun = () => {
   console.log("run 'Basic tests' tests")
-  describe("'Required tests' function", () => {
+  describe("===Required tests=== 'calculateTeamFinanceReport' function", () => {
      // BASIC
     it("should pass basic case #1", () => {
       const pricing2 = {
@@ -210,7 +210,7 @@ window.tsTestsRun = () => {
       })
     })
 
-    it("Required should pass task example #2", () => {
+    it("should pass task example #2", () => {
       const salaries = {
          TeamLead: { salary: 1000, tax: "99%" },
          Architect: { salary: 9000, tax: "34%" },}
@@ -229,7 +229,7 @@ window.tsTestsRun = () => {
    })
   
   console.log("run 'calculateTeamFinanceReport' tests")
-  describe("'calculateTeamFinanceReport' function", () => {
+  describe("'===Regular tests=== calculateTeamFinanceReport' function", () => {
     it("should skip unrelevant input data", () => {
       const pricing2 = {
         Progger: {
