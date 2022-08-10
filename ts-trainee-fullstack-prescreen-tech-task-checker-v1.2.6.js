@@ -112,10 +112,9 @@ window.showCheckResult = () => {
     Tests
   ***********************************************/
 window.tsTestsRun = () => {
-  console.log("run 'calculateTeamFinanceReport' tests")
-  describe("'calculateTeamFinanceReport' function", () => {
-    
-    // BASIC
+  console.log("run 'Basic tests' tests")
+  describe("'Basic tests' function", () => {
+     // BASIC
     it("Required should pass task example case #1", () => {
       console.log("run Dima's test #2.2")
       const pricing2 = {
@@ -158,6 +157,7 @@ window.tsTestsRun = () => {
           name: "Peter",
         },
       ]
+      
       expect(window.calculateTeamFinanceReport(pricing2, team2)).toEqual(
       {"totalBudgetDesigner": 22500, "totalBudgetProjectManager": 1000, "totalBudgetTeam": 23500})
     })
@@ -219,7 +219,6 @@ window.tsTestsRun = () => {
           tax: "10%",
         },
       }
-
       const team = [
         {
           name: "Masha", // name of team member
@@ -234,7 +233,7 @@ window.tsTestsRun = () => {
           specialization: "Tester",
         },
       ]
-
+      
       expect(window.calculateTeamFinanceReport(pricing, team)).toEqual({
         totalBudgetTeam: 3398,
         totalBudgetProgger: 1176,
@@ -281,7 +280,10 @@ window.tsTestsRun = () => {
       )
     })
     // BASIC
-    
+   })
+  
+  console.log("run 'calculateTeamFinanceReport' tests")
+  describe("'calculateTeamFinanceReport' function", () => {
     it("should pass Dima's test #1 (rounding trap)", () => {
       console.log("run Dima's test #1 (rounding trap")
       const pricing1 = {
