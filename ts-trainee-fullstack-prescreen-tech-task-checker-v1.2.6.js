@@ -116,7 +116,7 @@ window.tsTestsRun = () => {
   describe("'Basic tests' function", () => {
      // BASIC
     it("Required should pass task example case #1", () => {
-      console.log("run Dima's test #2.2")
+      console.log("Required should pass task example case #1")
       const pricing2 = {
         Progger: {
           salary: 100, // without decimal counting system (100.5 or 99.99)
@@ -163,7 +163,7 @@ window.tsTestsRun = () => {
     })
 
     it("Required should pass task example case #2", () => {
-      console.log("run Dima's test #3")
+      console.log("Required should pass task example case #2")
       const pricing3 = {
         Progger: {
           salary: 300, // without decimal counting system (100.5 or 99.99)
@@ -207,7 +207,7 @@ window.tsTestsRun = () => {
     })
     
     it("Required should pass task example case #3", () => {
-      console.log("run task explanation case")
+      console.log("Required should pass task example case #3")
       const pricing = {
         Progger: {
           // specialization type 'Progger'
@@ -242,7 +242,7 @@ window.tsTestsRun = () => {
     })
 
     it("Required should pass task example case #4", () => {
-      console.log("run task example case #1")
+      console.log("Required should pass task example case #4")
       const pricing = {
         Manager: { salary: 1000, tax: "10%" },
         Designer: { salary: 600, tax: "30%" },
@@ -264,7 +264,7 @@ window.tsTestsRun = () => {
     })
 
     it("Required should pass task example case #5", () => {
-      console.log("run task example case #2")
+      console.log("Required should pass task example case #5")
       const salaries = {
          TeamLead: { salary: 1000, tax: "99%" },
          Architect: { salary: 9000, tax: "34%" },}
@@ -324,7 +324,7 @@ window.tsTestsRun = () => {
     })
     
     it("should pass Dima's test #2 (tricky rounding case with big values)", () => {
-      console.log("run Dima's test #4 (tricky rounding case with big values)")
+      console.log("should pass Dima's test #2 (tricky rounding case with big values)")
       const salaries = {
         Progger: {
           salary: 99990000,
